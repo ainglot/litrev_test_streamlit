@@ -11,13 +11,13 @@ def search_by_year(year):
     return df
 
 # Interfejs aplikacji
-st.title("Wyszukiwarka Bibliografii")
+st.title("Search publications by year")
 
 # Pole do wpisania roku
-year = st.text_input("Podaj rok publikacji:", "")
+year = st.text_input("Year of publication:", "")
 
 # Przycisk do uruchomienia wyszukiwania
-if st.button("Szukaj"):
+if st.button("Search"):
     if year:
         # Pobieranie wyników z bazy danych
         results = search_by_year(year)
@@ -35,6 +35,6 @@ if st.button("Szukaj"):
                 st.write(f"**DOI:** {row['doi'] if row['doi'] else 'Brak'}")
                 st.write("---")  # Dodaje linię oddzielającą wyniki
         else:
-            st.write("Brak wyników dla podanego roku.")
+            st.write("No results for the year specified.")
     else:
-        st.write("Proszę podać rok publikacji.")
+        st.write("Please indicate the year of publication.")
