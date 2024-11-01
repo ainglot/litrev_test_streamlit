@@ -22,19 +22,20 @@ if st.button("Search"):
         # Pobieranie wyników z bazy danych
         results = search_by_year(year)
 
-        if not results.empty:
-            # Wyświetlanie wyników
-            for index, row in results.iterrows():
-                st.write(f"### Publication {index + 1}")
-                st.write(f"**ID:** {row['id']}")
-                st.write(f"**Authors:** {row['author']}")
-                st.write(f"**Title:** {row['title']}")
-                st.write(f"**Keywords:** {row['keywords']}")
-                st.write(f"**Year:** {row['year']}")
-                st.write(f"**Abstract:** {row['abstract']}")
-                st.write(f"**DOI:** {row['doi'] if row['doi'] else 'Brak'}")
-                st.write("---")  # Dodaje linię oddzielającą wyniki
-        else:
-            st.write("No results for the year specified.")
+        with st.expander("Wyniki wyszukiwania", expanded=True):
+            if not results.empty:
+                # Wyświetlanie wyników
+                for index, row in results.iterrows():
+                    st.write(f"### Publication {index + 1}")
+                    st.write(f"**ID:** {row['id']}")
+                    st.write(f"**Authors:** {row['author']}")
+                    st.write(f"**Title:** {row['title']}")
+                    st.write(f"**Keywords:** {row['keywords']}")
+                    st.write(f"**Year:** {row['year']}")
+                    st.write(f"**Abstract:** {row['abstract']}")
+                    st.write(f"**DOI:** {row['doi'] if row['doi'] else 'Brak'}")
+                    st.write("---")  # Dodaje linię oddzielającą wyniki
+            else:
+                st.write("No results for the year specified.")
     else:
         st.write("Please indicate the year of publication.")
