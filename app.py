@@ -21,7 +21,7 @@ if st.button("Search"):
     if year:
         # Pobieranie wyników z bazy danych
         results = search_by_year(year)
-
+        # Nowe okno
         with st.expander("Wyniki wyszukiwania", expanded=True):
             if not results.empty:
                 # Wyświetlanie wyników
