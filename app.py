@@ -4,7 +4,7 @@ import pandas as pd
 
 # Funkcja do wyszukiwania danych w bazie SQLite
 def search_by_year(year):
-    conn = sqlite3.connect('test2.db')  # połącz z bazą danych SQLite
+    conn = sqlite3.connect('test.db')  # połącz z bazą danych SQLite
     query = "SELECT id, title, author, year, abstract, doi, entry_type, keywords FROM Bibliografia WHERE year = ?"
     df = pd.read_sql_query(query, conn, params=(year,))
     conn.close()
@@ -34,7 +34,11 @@ if st.button("Search"):
                     st.write(f"**Keywords:** {row['keywords']}")
                     st.write(f"**Year:** {row['year']}")
                     st.write(f"**Abstract:** {row['abstract']}")
-                    st.write(f"**DOI:** {row['doi'] if row['doi'] else 'Brak'}")
+                    if row['doi']:
+                        doi_link = f"[{row['doi']}](https://doi.org/{row['doi']})"
+                    else:
+                        doi_link = "Brak"
+                    st.write(f"**DOI:** {doi_link}")
                     st.write("---")  # Dodaje linię oddzielającą wyniki
                 st.write("</div>", unsafe_allow_html=True)
             else:
