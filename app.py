@@ -25,6 +25,7 @@ if st.button("Search"):
         with st.expander("Wyniki wyszukiwania", expanded=True):
             if not results.empty:
                 # Wyświetlanie wyników
+                st.write("<div style='max-height: 300px; overflow-y: auto;'>", unsafe_allow_html=True)  # Kontener do przewijania
                 for index, row in results.iterrows():
                     st.write(f"### Publication {index + 1}")
                     st.write(f"**ID:** {row['id']}")
@@ -35,6 +36,7 @@ if st.button("Search"):
                     st.write(f"**Abstract:** {row['abstract']}")
                     st.write(f"**DOI:** {row['doi'] if row['doi'] else 'Brak'}")
                     st.write("---")  # Dodaje linię oddzielającą wyniki
+                st.write("</div>", unsafe_allow_html=True)
             else:
                 st.write("No results for the year specified.")
     else:
