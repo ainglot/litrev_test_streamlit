@@ -4,7 +4,7 @@ import pandas as pd
 
 # Funkcja do wyszukiwania danych w bazie SQLite
 def search_by_year(year):
-    conn = sqlite3.connect('test.db')  # połącz z bazą danych SQLite
+    conn = sqlite3.connect('test2.db')  # połącz z bazą danych SQLite
     query = "SELECT id, title, author, year, abstract, doi, entry_type, keywords FROM Bibliografia WHERE year = ?"
     df = pd.read_sql_query(query, conn, params=(year,))
     conn.close()
