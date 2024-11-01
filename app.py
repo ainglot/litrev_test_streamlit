@@ -25,13 +25,13 @@ if st.button("Search"):
         if not results.empty:
             # Wyświetlanie wyników
             for index, row in results.iterrows():
-                st.write(f"### Publikacja {index + 1}")
+                st.write(f"### Publication {index + 1}")
                 st.write(f"**ID:** {row['id']}")
-                st.write(f"**Autorzy:** {row['author']}")
-                st.write(f"**Tytuł:** {row['title']}")
+                st.write(f"**Authors:** {row['author']}")
+                st.write(f"**Title:** {row['title']}")
                 st.write(f"**Keywords:** {row['keywords']}")
-                st.write(f"**Rok:** {row['year']}")
-                st.write(f"**Abstrakt:** {row['abstract']}")
+                st.write(f"**Year:** {row['year']}")
+                st.write(f"**Abstract:** {row['abstract']}")
                 st.write(f"**DOI:** {row['doi'] if row['doi'] else 'Brak'}")
                 st.write("---")  # Dodaje linię oddzielającą wyniki
         else:
